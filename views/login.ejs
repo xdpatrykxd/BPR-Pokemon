@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Project BPR">
+    <meta name="keywords" content="Pokémon, games, project">
+    <meta name="author" content="El Mallaly Rouchdi, Serraji Bilal, Łagoda Patryk">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body id="basic">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index">LandingPage</a></li>
+                <li><a href="login">login</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+       
+        <h1 class="hide">Inloggen</h1>
+        <form action="/loginAttempt" method="post">
+            <label for="username">Gebruikersnaam:</label><br>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">Wachtwoord:</label><br>
+            <input type="password" id="password" name="password" required><br>
+            <input type="submit" value="Inloggen">
+            <p id="center" style="color:red">
+                <%= errorMessage %>
+            </p>
+            <a class="center" href="register">registreren</a>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; BRP-projectgroep 2023-2024</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Project BPR">
+    <meta name="keywords" content="Pokémon, games, project">
+    <meta name="author" content="El Mallaly Rouchdi, Serraji Bilal, Łagoda Patryk">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/js/autocomplete.js" defer></script>
+</head>
+
+<body>
+    <header class="framed">
+        <input type="checkbox" id="menu-toggle" class="hide" checked>
+        <label id="hide-menu-button" for="menu-toggle">&#9776;</label>
+        <nav>
+            <ul>
+                <li><a href="whoisthatpokemon">Quiz</a></li>
+                <li><a href="team">Pokéteam</a></li>
+                <li>
+                    <a href="battler">VechtMatch</a>
+                </li>
+                <li><a href="vangen">Vang Pokémon</a></li>
+                <li><a href="index">Log uit</a></li>
+                <% user.userFlattenedPokemon .filter(element=> element.id == user.buddyId)
+                    .map(element => { %>
+                    <li class="buddy">
+                        <a href="/pokemoninfo/<%= user.buddyId %>">
+                            <img src="<%= element.spriteFront %>" alt="Selected Pokemon">
+                        </a>
+                        <% }); %>
+
+                            <p class="center">Buddy</p>
+                            </a>
+                    </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="guess-pokemon-container framed party no-framed-primary">
+            <div class="guess-pokemon-info">
+                <h2 class="flipped">
+                    <div class="flicker">
+                        <%= message %>
+                    </div>
+                </h2>
+                <h3 id="guess-result">
+                    RESTERENDE POGINGEN:<%= 10-tryAmount %> <br>
+                        <% if (result){%>
+                            <%=result %>
+                                <% } %>
+                </h3>
+                <img src="<%=pokemonToGuess.spriteFront%>" alt="Pokemon afbeelding" id="guess-pokemon-image">
+                <div class="guess-pokemon-input-button search-form">
+                    </p>
+                    <form action="/whoisthatpokemon" method="POST">
+                        <label for="guess">Voer de naam van de Pokémon in:</label>
+                        <input class=" framed-no-hd" id="guess-input" type="text" placeholder="Pokémon" name="guess">
+                        <datalist id="pokemonNames">
+                        </datalist>
+                        <button class="button" id="submit">Raad</button>
+                    </form>
+                    <a id="whoisthatpokemonReset" href="whoisthatpokemonReset">
+
+                        <button>RESET</button>
+
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; BRP-projectgroep 2023-2024</p>
+    </footer>
+</body>
+
+</html>

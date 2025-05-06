@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Project BPR">
+    <meta name="keywords" content="Pokémon, games, project">
+    <meta name="author" content="El Mallaly Rouchdi, Serraji Bilal, Łagoda Patryk">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body>
+    <header class="framed no-hd">
+        <input type="checkbox" id="menu-toggle" class="hide" checked>
+        <label id="hide-menu-button" for="menu-toggle">&#9776;</label>
+        <nav>
+            <ul>
+                <li><a href="whoisthatpokemon">Quiz</a></li>
+                <li><a href="team">Pokéteam</a></li>
+                <li>
+                    <a href="battler">VechtMatch</a>
+                </li>
+                <li><a href="vangen">Vang Pokémon</a></li>
+                <li><a href="index">Log uit</a></li>
+                <% user.userFlattenedPokemon .filter(element=> element.id == user.buddyId)
+                    .map(element => { %>
+                    <li class="buddy">
+                        <a href="/pokemoninfo/<%= user.buddyId %>">
+                            <img src="<%= element.spriteFront %>" alt="Selected Pokemon">
+                        </a>
+                        <% }); %>
+
+                            <p class="center">Buddy</p>
+                            </a>
+                    </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="framed party">
+            <ul id="homepage">
+                <li><a href="team"><button>Pokéteam</button></a></li>
+                <li><a href="battler"><button>VechtMatch</button></a></li>
+                <li><a href="vangen"><button>Vang Pokémon</button></a></li>
+                <li><a href="whoisthatpokemon"><button>Quiz</button></a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; BRP-projectgroep 2023-2024</p>
+    </footer>
+</body>
+
+</html>

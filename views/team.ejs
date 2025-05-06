@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Project BPR">
+    <meta name="keywords" content="Pokémon, games, project">
+    <meta name="author" content="El Mallaly Rouchdi, Serraji Bilal, Łagoda Patryk">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/js/autocomplete.js" defer></script>
+    <script src="/js/pokemonTeam.js" defer></script>
+</head>
+
+<body>
+    <header class="framed no-hd">
+        <input type="checkbox" id="menu-toggle" class="hide" checked>
+        <label id="hide-menu-button" for="menu-toggle">&#9776;</label>
+        <nav>
+            <ul>
+                <li><a href="whoisthatpokemon">Quiz</a></li>
+                <li><a href="team">Pokéteam</a></li>
+                <li>
+                    <a href="battler">VechtMatch</a>
+                </li>
+                <li><a href="vangen">Vang Pokémon</a></li>
+                <li><a href="index">Log uit</a></li>
+                <% user.userFlattenedPokemon .filter(element=> element.id == user.buddyId)
+                    .map(element => { %>
+                    <li class="buddy">
+                        <a href="/pokemoninfo/<%= user.buddyId %>">
+                            <img src="<%= element.spriteFront %>" alt="Selected Pokemon">
+                        </a>
+                        <% }); %>
+
+                            <p class="center">Buddy</p>
+                            </a>
+                    </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Pokémon Zoeken -->
+        <div class="team-pokemon-full framed party no-framed-primary">
+            <section class="pokemon-search">
+                <h2 class="flipped">Zoek Pokémon</h2>
+                <form class="search-form">
+                    <input class="framed-no-hd" type="text" id="pokemon-search-input"
+                        placeholder="Voer Pokémon naam of nummer in">
+                    <datalist id="pokemonNames">
+                    </datalist>
+                    <button class="specialButton" type="submit">Zoek</button>
+                </form>
+                <div class="search-buttons">
+                    <div class="search-buttons">
+                        <button type="button" id="showMyPokemon">Mijn Pokémon</button>
+                        <button type="button" id="showAllPokemon">Alle Pokémon</button>
+                    </div>
+            </section>
+            <section class="search-results hide">
+                <h2 class="flipped">Resultaten</h2>
+            </section>
+
+
+            <section class="pokemon-team-box framed">
+                <h2 class="flipped">Mijn Pokémon Team</h2>
+                <div class="pokemon-team">
+                    <% function findUserPokemon(userPokemonList, id) { return userPokemonList.find(pokemon=> pokemon.id
+                        === id);
+                        } %>
+
+                        <% for (let index=0; index < pokemonList.length; index++) { let
+                            currentPokemon=pokemonList[index]; let
+                            userPokemon=findUserPokemon(user.userFlattenedPokemon, currentPokemon.id); %>
+                            <% if (userPokemon) { %>
+                                <section class="pokemonOwned pokemon-item" data-name=" <%=userPokemon.name %>"
+                                    data-id="<%= userPokemon.id %>">
+
+                                    <form method="get" action="/pokemoninfo/<%= userPokemon.id %>">
+                                        <button id="buddy-pokemon">
+                                            <h3>
+                                                <%= userPokemon.species %>
+                                            </h3>
+                                            <img src="<%= userPokemon.spriteFront %>" alt="Pokemon 1">
+                                            <p>
+                                                <%= userPokemon.name%>
+                                            </p>
+                                        </button>
+                                    </form>
+                                    <form method="post" action="/team/addBuddy/<%= userPokemon.id %>">
+                                        <button id="buddy-pokemon">⭐</button>
+                                    </form>
+                                </section>
+                                <% } else { %>
+                                    <section class="pokemonNotOwned pokemon-item" data-name=" <%=currentPokemon.name %>"
+                                        data-id="<%= currentPokemon.id %>">
+                                        <form method="get" action="/pokemoninfo/<%= currentPokemon.id %>">
+                                            <button id="buddy-pokemon">
+                                                <h3>
+                                                    <%= currentPokemon.name %>
+                                                </h3>
+                                                <p class="hide">
+                                                    <%= currentPokemon.name %>
+                                                </p>
+                                                <img src="<%= currentPokemon.spriteFront %>" alt="Pokemon 1"
+                                                    class="greypokemon">
+
+                                            </button>
+                                        </form>
+                                    </section>
+                                    <% } %>
+                                        <% } %>
+
+
+
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; BRP-projectgroep 2023-2024</p>
+    </footer>
+</body>
+
+</html>
